@@ -100,3 +100,21 @@ substring:
     beq $s0,44, invalidloop #checks if the next bit is a comma
     li $t2,0 #resets my space/tabs checker back to zero
     j loop
+SubprogramB:
+    beq $t3,0,finish #check how many charcter are left to convert 
+    addi $t3,$t3,-1 #decreases the amount of charaters left to convert
+    lb $s0, ($t4) # loads the bit that will be converted
+    
+    addi $t4,$t4,1    # moves to the next element in the array
+    j SubprogramC 
+continue:
+    
+    sw $s1,0($sp)    #stores the converted number
+    j SubprogramB
+
+SubprogramC:
+    move $t8, $t3    #stores the amount of characters left to use as an exponent
+    li $t9, 1    # $t9 represents 30 to a certian power and set equal to 1
+    ble $s0, 57, num #sorts the bit to the apporiate function
+    ble $s0, 84, upper
+    ble $s0, 116, lower
