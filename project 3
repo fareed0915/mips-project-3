@@ -186,3 +186,7 @@ invalidprint:
     la $a0, notvalid #prints a nonvaild input
     syscall    
     j com #jumps to print a comma
+    
+Exit:
+    li $v0, 10
+    syscall
