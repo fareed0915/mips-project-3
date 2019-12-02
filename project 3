@@ -53,7 +53,7 @@ check:
     ble $s0, 57, vaild # checks to see if the ascii less than 57(integers)
     ble $s0, 64, invalidloop # checks to see if the ascii less than 64
     ble $s0, 85, vaild    # checks to see if the ascii less than 85(capital letters)
-    ble $s0, 97, invalidloop # checks to see if the ascii less than 97
+    ble $s0, 96, invalidloop # checks to see if the ascii less than 96
     ble $s0, 117, vaild     # checks to see if the ascii less than 117(lowercase letters)
     bge $s0, 118, invalidloop # checks to see if the ascii greater than 118
 
@@ -151,21 +151,21 @@ num:
     
     sub $s0, $s0, 48    #converts interger bits 
     beq $t3, 0, combine    # if there are no charaters left that mean the exponent is zero
-    li $t9, 30        
+    li $t9, 31        
     j exp
 
 upper:
     
     sub $s0, $s0, 55 #converts uppercase bits
     beq $t3, 0, combine # if there are no charaters left that mean the exponent is zero
-    li $t9, 30
+    li $t9, 31
     j exp
 
 lower:
     
     sub $s0, $s0, 87 #converts lowercase bits
     beq $t3, 0, combine # if there are no charaters left that mean the exponent is zero
-    li $t9, 30
+    li $t9, 31
     j exp
 exp:
     #raises my base to a certain exponent by muliplying itself repeatly
